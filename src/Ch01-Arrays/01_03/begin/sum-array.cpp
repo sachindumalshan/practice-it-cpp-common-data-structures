@@ -3,13 +3,19 @@ using namespace std;
 
 int calculateSum(const int arr[], size_t size)
 {
-    int sum = 0;
-    for (int i = 0; i < size; i++)
+    if (size == 0)
+        return 0;
+    else if (size == 1)
+        return arr[0];
+    else
     {
-        sum = sum + arr[i];
+        int sum = 0;
+        for (int i = 0; i < size; i++)
+        {
+            sum = sum + arr[i];
+        }
+        return sum;
     }
-
-    return sum;
 }
 
 int main()
