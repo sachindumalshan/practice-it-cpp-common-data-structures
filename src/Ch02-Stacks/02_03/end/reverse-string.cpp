@@ -2,39 +2,32 @@
 #include <stack>
 #include <string>
 
-using namespace std;
-
-string reverseString(const string &input)
+std::stack<char> inputLetter;
+std::string reverseString(const std::string &input)
 {
-    stack<char> charStack;
-
-    // Push all characters of the string to the stack
-    for (char c : input)
+    // std::cout << input << std::endl;
+    for (int i = 0; i < input.length(); i++)
     {
-        charStack.push(c);
+        inputLetter.push(input[i]);
+        // std::cout << input[i] << std::endl;
     }
 
-    string reversedString;
-
-    // Pop all characters from the stack and append them to the reversed string
-    while (!charStack.empty())
+    std::string newWord;
+    for (int i = 0; i < 12; i++)
     {
-        reversedString += charStack.top();
-        charStack.pop();
+        // std::cout << inputLetter.top() << std::endl;
+        newWord = newWord + inputLetter.top();
+        inputLetter.pop();
     }
-
-    return reversedString;
+    // std::cout << newWord << std::endl;
+    return newWord;
 }
 
 int main()
 {
-    string str = "Hello, World!";
-    string revStr = reverseString(str);
+    std::string word = "Hello,World!";
+    std::cout << reverseString(word) << std::endl;
 
-    cout << reverseString("Hello, World!") << endl;
-
-    cout << "Original String: " << str << endl;
-    cout << "Reversed String: " << revStr << endl;
-
+    std::cout << std::endl;
     return 0;
 }
