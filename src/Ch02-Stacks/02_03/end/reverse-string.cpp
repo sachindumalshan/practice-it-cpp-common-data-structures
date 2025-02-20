@@ -5,21 +5,16 @@
 std::stack<char> inputLetter;
 std::string reverseString(const std::string &input)
 {
-    // std::cout << input << std::endl;
-    for (int i = 0; i < input.length(); i++)
+    for (char le : input)
     {
-        inputLetter.push(input[i]);
-        // std::cout << input[i] << std::endl;
+        inputLetter.push(le);
     }
 
     std::string newWord;
-    for (int i = 0; i < 12; i++)
-    {
-        // std::cout << inputLetter.top() << std::endl;
+    while(!inputLetter.empty()){
         newWord = newWord + inputLetter.top();
         inputLetter.pop();
     }
-    // std::cout << newWord << std::endl;
     return newWord;
 }
 
