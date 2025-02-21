@@ -16,12 +16,15 @@ public:
     {
         if (!historyList.empty())
             historyList.pop();
+        else "No sites to go back";
     }
 
     std::string current() const
     {
         if (!historyList.empty())
             return historyList.top();
+        else
+            return "No current websites";
     }
 };
 
