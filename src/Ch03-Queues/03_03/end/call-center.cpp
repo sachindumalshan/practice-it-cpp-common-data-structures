@@ -35,7 +35,8 @@ int main()
         customer.receive_call(i);
     std::cout << "-----" << std::endl;
 
-    customer.process_call();
+    if (customer.process_call() == -1)
+        std::cout << "No calls to process" << std::endl;
 
     return 0;
 }
