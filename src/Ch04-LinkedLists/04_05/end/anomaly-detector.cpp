@@ -89,16 +89,11 @@ public:
 
     void smooth_data()
     {
-        // list<double>::iterator itOne = sensor_data.begin();
-        //  cout << *itOne << endl;
-        //  cout << *itTwo << endl;
-
         if (!sensor_data.empty())
         {
             list<double>::iterator itOne = sensor_data.begin();
             auto itTwo = itOne;
             while (itOne != sensor_data.end())
-            // for (int i = 1; i < sensor_data.size(); i++)
             {
                 itTwo = itOne;
                 advance(itTwo, 1);
@@ -106,11 +101,7 @@ public:
                 if (*itTwo > *itOne * 2 || *itTwo < *itOne / 2)
                 {
                     *itTwo = *itOne;
-                    //sensor_data.insert(itTwo, *itOne);
-                    //sensor_data.erase(itTwo);
                 }
-
-                // cout << "one " << *itOne << " | two " << *itTwo << endl;
                 itOne++;
             }
         }
