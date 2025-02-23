@@ -5,7 +5,13 @@ using namespace std;
 
 void findPrimes(const int arr[], size_t size, std::vector<int> &primes)
 {
-    // TODO: Implement
+    for(int i=0; i<size; i++){
+        int count =0;
+        for(int j=1; j<arr[i]+1; j++){
+            if(arr[i]%j == 0) count++;
+        }
+        if(count==2) primes.push_back(arr[i]);
+    }
 }
 
 int main()
@@ -32,3 +38,4 @@ int main()
     }
     return 0;
 }
+
