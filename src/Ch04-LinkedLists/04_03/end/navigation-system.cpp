@@ -1,3 +1,7 @@
+/*
+Author implement code base
+==========================
+
 #include <iostream>
 #include <list>
 using namespace std;
@@ -7,6 +11,7 @@ class Route
 private:
     list<string> stops;
     list<string>::iterator current;
+
 public:
     Route()
     {
@@ -27,10 +32,10 @@ public:
     // Advance to the next stop on the route
     void next_stop()
     {
-        if(!stops.empty())
+        if (!stops.empty())
         {
             ++current;
-            if(current == stops.end())
+            if (current == stops.end())
             {
                 current = stops.begin();
             }
@@ -40,9 +45,9 @@ public:
     // Go back to the previous stop on the route
     void prev_stop()
     {
-        if(!stops.empty())
+        if (!stops.empty())
         {
-            if(current == stops.begin())
+            if (current == stops.begin())
             {
                 current = stops.end();
             }
@@ -53,11 +58,11 @@ public:
     // Display the current stop on the route
     void current_stop()
     {
-        if(!stops.empty())
+        if (!stops.empty())
         {
             cout << "Current stop: " << *current << endl;
         }
-        else 
+        else
         {
             cout << "No stops in the route" << endl;
         }
@@ -82,6 +87,90 @@ int main()
     route.current_stop(); // "Current stop: Denver"
     route.prev_stop();
     route.current_stop(); // "Current stop: Salt Lake City"
+
+    return 0;
+}
+
+*/
+
+#include <iostream>
+#include <list>
+using namespace std;
+
+class Route
+{
+
+private:
+    list<string> stop_position;
+    list<string>::iterator it;
+
+public:
+    Route()
+    {
+        it = stop_position.end();
+    }
+
+    void add_stop(const string &stop)
+    {
+        stop_position.push_back(stop);
+        if (it == stop_position.end())
+            it = stop_position.begin();
+    }
+
+    void next_stop()
+    {
+        if (!stop_position.empty())
+        {
+            it++;
+            if (it == stop_position.end())
+                it = stop_position.begin();
+        }
+    }
+
+    void prev_stop()
+    {
+        if (!stop_position.empty())
+        {
+            it--;
+            if (it == stop_position.end())
+                it = stop_position.begin();
+        }
+    }
+
+    void current_stop()
+    {
+        if (!stop_position.empty())
+        {
+            cout << *it << endl;
+        }
+        else
+        {
+            cout << "No position to traverse" << endl;
+        }
+    }
+};
+
+int main()
+{
+
+    Route path;
+    path.add_stop("A");
+    path.add_stop("B");
+    path.add_stop("C");
+    path.add_stop("D");
+    path.add_stop("E");
+
+    path.current_stop();
+    path.next_stop();
+    path.current_stop();
+    path.next_stop();
+    path.current_stop();
+    path.next_stop();
+    path.current_stop();
+    path.next_stop();
+    path.current_stop();
+    path.prev_stop();
+    path.current_stop();
 
     return 0;
 }
